@@ -47,33 +47,34 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Practically Adopting Human Activity Recognition</h1>
+          <h1 class="title is-1 publication-title">Penetrative AI: Adopting LLMs for Comprehending Physical World</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://dapowan.github.io/">Huatao Xu</a><sup>1</sup>,
+              <a href="https://dapowan.github.io/">Huatao Xu</a><sup>†</sup>,
             </span>
             <span class="author-block">
-              <a href="https://zhoupf.github.io/">Pengfei Zhou</a><sup>2</sup>,
+              <a href="">Liying Han</a><sup>§</sup>,
             </span>
             <span class="author-block">
-              <a href="https://personal.ntu.edu.sg/tanrui/">Rui Tan</a><sup>1</sup>,
+              <a href="https://cse.hkust.edu.hk/~lim/">Mo Li</a><sup>*,†</sup>,
             </span>
             <span class="author-block">
-              <a href="https://cse.hkust.edu.hk/~lim/">Mo Li</a><sup>1,3</sup>,
+              <a href="https://www.ee.ucla.edu/mani-srivastava/">Mani Srivastava</a><sup>§</sup>,
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Nanyang Technological University,</span>
-            <span class="author-block"><sup>2</sup>University of Pittsburgh, </span>
-            <span class="author-block"><sup>3</sup>The Hong Kong University of Science and Technology</span>
+            <span class="author-block"><sup>*</sup>The Hong Kong University of Science and Technology</span>
+            <span class="author-block"><sup>†</sup>Nanyang Technological University,</span>
+            <span class="author-block"><sup>§</sup>University of California Los Angeles</span>
+
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://dapowan.github.io/files/UniHAR.pdf"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -112,7 +113,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/dapowan/UniHAR"
+                <a href="https://github.com/dapowan/Penetrative-AI"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -145,12 +146,12 @@
     <div class="row justify-content-center">
       <div class="content col-sm-12 col-md-10 col-lg-6">
         <!-- Your content goes here -->
-        <img src="./static/images/scenario_major.jpg"
+        <img src="./static/images/objective.jpg"
              class="image-scenario"
              alt="Interpolate start reference image."/>
 
         <h4 class="subtitle has-text-centered">
-          Universal human activity recognition scenario.
+          Overview of Penetrative AI.
         </h4>
       </div>
     </div>
@@ -167,15 +168,15 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Can we have a universal framework that supports applying human activity recognition (HAR) models across different user groups of real-world diversities, and with realistic adoption overhead?
+            Recent developments of Large Language Models (LLMs) has demonstrated remarkable capabilities across a range of tasks.
+            Questions, however, persist about the nature of LLMs and their potential to integrate common-sense human knowledge in processing real-world tasks.
           </p>
           <p>
-            We present <strong>UniHAR</strong>, a <strong>uni</strong>versal <strong>HAR</strong> framework for mobile devices.
-            To address the challenge of data heterogeneity, we thoroughly study augmenting data with the physics of the IMU sensing process and present a novel adoption of data augmentations for the feature learning.
+            We delves into these questions by extending  LLMs to interact directly with the physical world through IoT sensors and actuators, a concept that we term <strong>Penetrative AI</strong>.
+            The paper explores such an extension at two levels of the LLMs' penetration into the physical world in terms of their processing of sensing signals.
           </p>
           <p>
-            UniHAR is fully prototyped on the mobile platform and introduces low overhead to mobile devices.
-            Extensive comparative experiments demonstrate its superior performance in adapting HAR models across four open datasets.
+            Our preliminary results indicate that the LLMs, represented by ChatGPT, have considerable proficiency in interpreting and reasoning over IoT sensor data and performing tasks in the physical realm, thus opening new possibilities for LLMs beyond traditional text-based tasks.
           </p>
         </div>
       </div>
@@ -201,181 +202,195 @@
   <div class="container is-max-desktop">
 
     <!-- Overview. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Overview</h2>
-<!--        <br/>-->
-        <!--/ Interpolating. -->
+<!--    <div class="columns is-centered">-->
+<!--      <div class="column is-full-width">-->
+<!--        <h2 class="title is-3">Overview</h2>-->
+<!--&lt;!&ndash;        <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
 
-        <!-- Re-rendering. -->
-<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
-        <div class="row justify-content-center">
-          <div class="content col-sm-12 col-md-10 col-lg-8">
-            <img src="./static/images/overview_concise.jpg"
-                 class="image-scenario"
-                 alt="Interpolate start reference image."/>
-            <h4 class="subtitle has-text-centered">UniHAR overview.</h4>
-          </div>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            UniHAR has two training stages:
-          </p>
-          <ul>
-              <li>
-                <p>
-                  <strong>Feature Extraction. </strong>
-                  All local unlabeled datasets are first augmented to align the distributions of heterogeneous data from various clients.
-                To construct a generalized feature extractor (i.e., the <i>encoder</i>), the cloud server collaborates with all mobile clients to exploit massive augmented unlabeled data.
-                The encoder and decoder are trained on clients individually, which learn the high-level features using self-supervised learning techniques.
-                The cloud server combines local models and obtains a generalized model.
-              </p>
+<!--        &lt;!&ndash; Re-rendering. &ndash;&gt;-->
+<!--&lt;!&ndash;        <h3 class="title is-4">Re-rendering the input video</h3>&ndash;&gt;-->
+<!--        <div class="row justify-content-center">-->
+<!--          <div class="content col-sm-12 col-md-10 col-lg-8">-->
+<!--            <img src="./static/images/overview_concise.jpg"-->
+<!--                 class="image-scenario"-->
+<!--                 alt="Interpolate start reference image."/>-->
+<!--            <h4 class="subtitle has-text-centered">UniHAR overview.</h4>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            UniHAR has two training stages:-->
+<!--          </p>-->
+<!--          <ul>-->
+<!--              <li>-->
+<!--                <p>-->
+<!--                  <strong>Feature Extraction. </strong>-->
+<!--                  All local unlabeled datasets are first augmented to align the distributions of heterogeneous data from various clients.-->
+<!--                To construct a generalized feature extractor (i.e., the <i>encoder</i>), the cloud server collaborates with all mobile clients to exploit massive augmented unlabeled data.-->
+<!--                The encoder and decoder are trained on clients individually, which learn the high-level features using self-supervised learning techniques.-->
+<!--                The cloud server combines local models and obtains a generalized model.-->
+<!--              </p>-->
 
-              </li>
-            <li>
-              <p>
-                <strong>Activity Recognition. </strong>
-                Based on the generalized encoder, the server then adopts a small amount of labeled data from source users and trains an activity recognition model.
-                Data augmentation is also integrated to enrich the diversity of labeled data and narrow the distribution gap between the source and target domains.
-                The activity recognizer, including <i>encoder</i>, <i>refiner</i>, and <i>classifier</i>, jointly learn to recognize activity types of labeled IMU data.
-              </p>
-            </li>
-          </ul>
-          <p>
-            After the server dispatches the recognizer, each client utilizes it to classify activities without additional training.
-          </p>
-        </div>
+<!--              </li>-->
+<!--            <li>-->
+<!--              <p>-->
+<!--                <strong>Activity Recognition. </strong>-->
+<!--                Based on the generalized encoder, the server then adopts a small amount of labeled data from source users and trains an activity recognition model.-->
+<!--                Data augmentation is also integrated to enrich the diversity of labeled data and narrow the distribution gap between the source and target domains.-->
+<!--                The activity recognizer, including <i>encoder</i>, <i>refiner</i>, and <i>classifier</i>, jointly learn to recognize activity types of labeled IMU data.-->
+<!--              </p>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--          <p>-->
+<!--            After the server dispatches the recognizer, each client utilizes it to classify activities without additional training.-->
+<!--          </p>-->
+<!--        </div>-->
 
-        <!--/ Re-rendering. -->
+<!--        &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
 
-      </div>
-    </div>
+<!--      </div>-->
+<!--    </div>-->
     <!--/ Overview. -->
 
     <!-- Data augmentation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Physics-Informed Data Augmentation</h2>
-<!--        <br/>-->
-        <!--/ Interpolating. -->
+<!--    <div class="columns is-centered">-->
+<!--      <div class="column is-full-width">-->
+<!--        <h2 class="title is-3">Physics-Informed Data Augmentation</h2>-->
+<!--&lt;!&ndash;        <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
 
-        <!-- Re-rendering. -->
-<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
-        <div class="content has-text-justified">
-          <p>
-            To mitigate the data heterogeneity, UniHAR enriches the IMU data diversity based on physical knowledge and assists the learning of generalizable features.
-          </p>
-        </div>
-        <div class="row justify-content-center">
-          <div class="content col-sm-12 col-md-10 col-lg-8">
-            <img src="./static/images/data_aug.jpg"
-                 class="image-scenario"
-                 alt="Interpolate start reference image."/>
-            <h4 class="subtitle has-text-centered">Data augmentation model.</h4>
-          </div>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            Sensor readings are observations from the underlying physical states.
-            A data augmentation is a mapping F(&middot;) that transforms observations from the original space to the augmented space.
-            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between observations with the underlying physical principles, which is defined as:
-          </p>
-          <p class="definition">
-            <i>"G(&middot;) is a physical embedding of F(&middot;) if G(&middot;) transforms physical states such that the observations from the transformed physical states equal the augmented observations of F(&middot;).
-            "
-            </i>
-          </p>
-          <p>
-            In practice, a mapping F(&middot;) that has a physical embedding G(&middot;) indicates the transition of readings can take place through a physical process in reality.
-            We thus define three types of data augmentation based on the above physical embedding:
-          </p>
-          <ul>
-              <li>
-                <p>
-                  <strong>Complete data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), and F(&middot;) can be fully formulated with original observations and known physical states.
-              </p>
+<!--        &lt;!&ndash; Re-rendering. &ndash;&gt;-->
+<!--&lt;!&ndash;        <h3 class="title is-4">Re-rendering the input video</h3>&ndash;&gt;-->
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            To mitigate the data heterogeneity, UniHAR enriches the IMU data diversity based on physical knowledge and assists the learning of generalizable features.-->
+<!--          </p>-->
+<!--        </div>-->
+<!--        <div class="row justify-content-center">-->
+<!--          <div class="content col-sm-12 col-md-10 col-lg-8">-->
+<!--            <img src="./static/images/data_aug.jpg"-->
+<!--                 class="image-scenario"-->
+<!--                 alt="Interpolate start reference image."/>-->
+<!--            <h4 class="subtitle has-text-centered">Data augmentation model.</h4>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            Sensor readings are observations from the underlying physical states.-->
+<!--            A data augmentation is a mapping F(&middot;) that transforms observations from the original space to the augmented space.-->
+<!--            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between observations with the underlying physical principles, which is defined as:-->
+<!--          </p>-->
+<!--          <p class="definition">-->
+<!--            <i>"G(&middot;) is a physical embedding of F(&middot;) if G(&middot;) transforms physical states such that the observations from the transformed physical states equal the augmented observations of F(&middot;).-->
+<!--            "-->
+<!--            </i>-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            In practice, a mapping F(&middot;) that has a physical embedding G(&middot;) indicates the transition of readings can take place through a physical process in reality.-->
+<!--            We thus define three types of data augmentation based on the above physical embedding:-->
+<!--          </p>-->
+<!--          <ul>-->
+<!--              <li>-->
+<!--                <p>-->
+<!--                  <strong>Complete data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), and F(&middot;) can be fully formulated with original observations and known physical states.-->
+<!--              </p>-->
 
-              </li>
-            <li>
-              <p>
-                <strong>Approximate data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), but F(&middot;) involves unknown physical states and can be approximated by a formulation of known states.
-              </p>
-            </li>
-            <li>
-              <p>
-                <strong>Flaky data augmentation</strong>, where we cannot find a physical embedding G(&middot;) to support its mapping F(&middot;).
-              </p>
-            </li>
-          </ul>
-          <p>
-            We refer complete and approximate data augmentations to <strong><em>Physics-Informed Data Augmentations (PIDA)</em></strong>, which both have underlying support of physical embeddings.
-          </p>
-          <p>
-            UniHAR incorporates physics-informed data augmentation methods differently during the two stages of the framework based on their respective characteristics.
-            During the feature extraction stage, UniHAR only employs complete data augmentations to unlabeled data for generalizing the data distributions and avoiding approximation errors at scale.
-            During the feature extraction stage, UniHAR applies both complete and approximate data augmentation to augment labeled data for further data representativeness.
-          </p>
-        </div>
+<!--              </li>-->
+<!--            <li>-->
+<!--              <p>-->
+<!--                <strong>Approximate data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), but F(&middot;) involves unknown physical states and can be approximated by a formulation of known states.-->
+<!--              </p>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <p>-->
+<!--                <strong>Flaky data augmentation</strong>, where we cannot find a physical embedding G(&middot;) to support its mapping F(&middot;).-->
+<!--              </p>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--          <p>-->
+<!--            We refer complete and approximate data augmentations to <strong><em>Physics-Informed Data Augmentations (PIDA)</em></strong>, which both have underlying support of physical embeddings.-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            UniHAR incorporates physics-informed data augmentation methods differently during the two stages of the framework based on their respective characteristics.-->
+<!--            During the feature extraction stage, UniHAR only employs complete data augmentations to unlabeled data for generalizing the data distributions and avoiding approximation errors at scale.-->
+<!--            During the feature extraction stage, UniHAR applies both complete and approximate data augmentation to augment labeled data for further data representativeness.-->
+<!--          </p>-->
+<!--        </div>-->
 
-        <!--/ Re-rendering. -->
+<!--        &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
 
-      </div>
-    </div>
+<!--      </div>-->
+<!--    </div>-->
     <!--/ Data augmentation. -->
 
     <!-- Adoption. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">UniHAR Adoption</h2>
-<!--        <br/>-->
-        <!--/ Interpolating. -->
+<!--    <div class="columns is-centered">-->
+<!--      <div class="column is-full-width">-->
+<!--        <h2 class="title is-3">UniHAR Adoption</h2>-->
+<!--&lt;!&ndash;        <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
 
-        <div class="content has-text-justified">
-          <p>
-            In practical applications, UniHAR is a configurable framework that can adapt to two scenarios, i.e., <i>data-decentralized</i> and <i>data-centralized</i> scenarios.
-          </p>
-          <p>
-            In the data-decentralized scenario where raw data transmission is not encouraged, UniHAR collaborates with all users and integrates self-supervised and federated learning techniques to train a generalized feature extraction model using massive and augmented unlabeled data.
-            UniHAR then constructs an activity recognition model using limited but augmented labeled data from source users.
-          </p>
-          <p>
-            In the data-centralized scenario, where raw data transmissions from target users are possible, UniHAR can further leverage adversarial training techniques for improved performance.
-          </p>
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            In practical applications, UniHAR is a configurable framework that can adapt to two scenarios, i.e., <i>data-decentralized</i> and <i>data-centralized</i> scenarios.-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            In the data-decentralized scenario where raw data transmission is not encouraged, UniHAR collaborates with all users and integrates self-supervised and federated learning techniques to train a generalized feature extraction model using massive and augmented unlabeled data.-->
+<!--            UniHAR then constructs an activity recognition model using limited but augmented labeled data from source users.-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            In the data-centralized scenario, where raw data transmissions from target users are possible, UniHAR can further leverage adversarial training techniques for improved performance.-->
+<!--          </p>-->
 
-        </div>
+<!--        </div>-->
 
-        <!--/ Re-rendering. -->
+<!--        &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
 
-      </div>
-    </div>
+<!--      </div>-->
+<!--    </div>-->
     <!--/ Adoption. -->
 
     <!-- Concurrent Work. -->
+<!--    <div class="columns is-centered">-->
+<!--      <div class="column is-full-width">-->
+<!--        <h2 class="title is-3">Related Links</h2>-->
+
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            <i class="fas fa-hand-point-right"></i> Check <a href="https://dapowan.github.io/files/UniHAR.pdf" target="_blank"><i class="fas fa-file-pdf"></i>UniHAR</a> paper for more details.-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            <i class="fas fa-hand-point-right"></i> Check <a href=""><i class="fab fa-github"></i>UniHAR</a>-->
+<!--            if you are interested in implementing UniHAR with Pytorch.-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            <i class="fas fa-hand-point-right"></i> Check <a href=""><i class="fab fa-github"></i>UniHAR Mobile</a>-->
+<!--            if you are interested in building HAR models on Android devices with Tensorflow lite.-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            <i class="fas fa-hand-point-right"></i> Check our previous work <a href="https://github.com/dapowan/LIMU-BERT-Public" target="_blank"><i class="fab fa-github"></i>LIMU-BERT</a> (an <strong>IMU foundation model</strong>) if you are interested in self-supervised representation learning for IMU data.-->
+<!--          </p>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--/ Concurrent Work. -->
+
+    <!-- Prompt. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
+        <h2 class="title is-3">Prompt</h2>
 
         <div class="content has-text-justified">
           <p>
-            <i class="fas fa-hand-point-right"></i> Check <a href="https://dapowan.github.io/files/UniHAR.pdf" target="_blank"><i class="fas fa-file-pdf"></i>UniHAR</a> paper for more details.
-          </p>
-          <p>
-            <i class="fas fa-hand-point-right"></i> Check <a href=""><i class="fab fa-github"></i>UniHAR</a>
-            if you are interested in implementing UniHAR with Pytorch.
-          </p>
-          <p>
-            <i class="fas fa-hand-point-right"></i> Check <a href=""><i class="fab fa-github"></i>UniHAR Mobile</a>
-            if you are interested in building HAR models on Android devices with Tensorflow lite.
-          </p>
-          <p>
-            <i class="fas fa-hand-point-right"></i> Check our previous work <a href="https://github.com/dapowan/LIMU-BERT-Public" target="_blank"><i class="fab fa-github"></i>LIMU-BERT</a> (an <strong>IMU foundation model</strong>) if you are interested in self-supervised representation learning for IMU data.
+            <i class="fas fa-hand-point-right"></i> Try our <a href="https://github.com/dapowan/Penetrative-AI" target="_blank"><i class="fas fa-file-code"></i>prompt</a>.
           </p>
 
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
-
+    <!--/ Prompt. -->
   </div>
 </section>
 
@@ -383,8 +398,7 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>123
-    123</code></pre>
+    <pre><code>TBD</code></pre>
   </div>
 </section>
 
