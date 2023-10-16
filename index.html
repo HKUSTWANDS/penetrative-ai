@@ -151,7 +151,7 @@
              alt="Interpolate start reference image."/>
 
         <h4 class="subtitle has-text-centered">
-          Overview of Penetrative AI.
+          Figure 1. Overview of Penetrative AI.
         </h4>
       </div>
     </div>
@@ -204,15 +204,15 @@
 <section class="section">
   <div class="container is-max-desktop">
 
-    <!-- Overview. -->
-<!--    <div class="columns is-centered">-->
-<!--      <div class="column is-full-width">-->
-<!--        <h2 class="title is-3">Overview</h2>-->
-<!--&lt;!&ndash;        <br/>&ndash;&gt;-->
-<!--        &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
+<!--     Overview.-->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Introduction</h2>
+<!--        <br/>-->
+        <!--/ Interpolating. -->
 
-<!--        &lt;!&ndash; Re-rendering. &ndash;&gt;-->
-<!--&lt;!&ndash;        <h3 class="title is-4">Re-rendering the input video</h3>&ndash;&gt;-->
+        <!-- Re-rendering. -->
+<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
 <!--        <div class="row justify-content-center">-->
 <!--          <div class="content col-sm-12 col-md-10 col-lg-8">-->
 <!--            <img src="./static/images/overview_concise.jpg"-->
@@ -221,111 +221,140 @@
 <!--            <h4 class="subtitle has-text-centered">UniHAR overview.</h4>-->
 <!--          </div>-->
 <!--        </div>-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            UniHAR has two training stages:-->
-<!--          </p>-->
-<!--          <ul>-->
-<!--              <li>-->
-<!--                <p>-->
-<!--                  <strong>Feature Extraction. </strong>-->
-<!--                  All local unlabeled datasets are first augmented to align the distributions of heterogeneous data from various clients.-->
-<!--                To construct a generalized feature extractor (i.e., the <i>encoder</i>), the cloud server collaborates with all mobile clients to exploit massive augmented unlabeled data.-->
-<!--                The encoder and decoder are trained on clients individually, which learn the high-level features using self-supervised learning techniques.-->
-<!--                The cloud server combines local models and obtains a generalized model.-->
-<!--              </p>-->
+        <div class="content has-text-justified">
+          <p>
+            Large Language Models (LLMs) cultivated on extensive text datasets have showcased remarkable capabilities across diverse tasks, including coding and logical problem-solving.
+            However, beneath these impressive feats lie an intriguing question: Are LLMs the result of mere statistical memorization, or do they already organically assimilate common-sense human knowledge in a pervading "<strong>world model</strong>"?
+            Does such a world model, if existing, enable the LLMs to establish sophisticated connections among high-level concepts and unravel the intricacies of the world's operations?
+          </p>
+          <p>
+            In this paper, we hypothesize that the answer to the above question is true, and extend the boundaries of LLM capabilities by directly letting them interact with the physical world through Internet of Things (IoT) sensors.
+            A basic example of this process is depicted in Figure 1, where different from the conventional way of LLM usage in natural language tasks, an LLM is expected to analyze sensor data and aided by expert knowledge to deduce the physical states of the object.
+            These sensor and actuator readings are indeed projections from the physical world, and the LLM is expected to harness its common human knowledge to comprehend sensor data and execute perception tasks.
+          </p>
+          <p>
+            We formulate such a problem from a signal processing's point of view, and specifically explore the LLMs' penetration into the physical world at two signal processing levels of the sensor data:
+          </p>
+          <ul>
+            <li>
+              <p>
+                <strong>Textualized-level penetration. </strong>
+                LLMs are instructed to process textualized signal derived from underlying sensor data.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Digitized-level penetration. </strong>
+                LLMs are guided to digitized signal, essentially numerical sequences of raw sensor data.
+              </p>
+            </li>
+          </ul>
+          <p>
+            We term this endeavor "<strong>Penetrative AI</strong>" -- where the LLM-based "world model" transforms into sentience, seamlessly integrating with the Cyber-Physical Systems (CPS) to access and interact with the physical world.
+          </p>
+          <p>
+            Our methodology is exemplified through two illustrative applications at two different levels, respectively. Next, we will elaborate on the design and experiment results of these two illustrative applications.
+          </p>
+        </div>
 
-<!--              </li>-->
-<!--            <li>-->
-<!--              <p>-->
-<!--                <strong>Activity Recognition. </strong>-->
-<!--                Based on the generalized encoder, the server then adopts a small amount of labeled data from source users and trains an activity recognition model.-->
-<!--                Data augmentation is also integrated to enrich the diversity of labeled data and narrow the distribution gap between the source and target domains.-->
-<!--                The activity recognizer, including <i>encoder</i>, <i>refiner</i>, and <i>classifier</i>, jointly learn to recognize activity types of labeled IMU data.-->
-<!--              </p>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--          <p>-->
-<!--            After the server dispatches the recognizer, each client utilizes it to classify activities without additional training.-->
-<!--          </p>-->
-<!--        </div>-->
+        <!--/ Re-rendering. -->
 
-<!--        &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
+      </div>
+    </div>
+<!--    / Overview.-->
 
-<!--      </div>-->
-<!--    </div>-->
-    <!--/ Overview. -->
+    <!-- Activity Sensing. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Activity Sensing</h2>
+<!--        <br/>-->
+        <!--/ Interpolating. -->
 
-    <!-- Data augmentation. -->
-<!--    <div class="columns is-centered">-->
-<!--      <div class="column is-full-width">-->
-<!--        <h2 class="title is-3">Physics-Informed Data Augmentation</h2>-->
-<!--&lt;!&ndash;        <br/>&ndash;&gt;-->
-<!--        &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
+        <!-- Re-rendering. -->
+<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
+        <div class="content has-text-justified">
+          <p>
+            This section describes our effort in tasking ChatGPT, a chosen vehicle, to comprehend IoT sensor data at the textualized signal level. </p>
+        </div>
+        <h3 class="title is-4">Design</h3>
+        <div class="content has-text-justified">
+            We take activity sensing as an illustrative example, where we task ChatGPT with the interpretation of sensor data collected from smartphones to derive user activities. The input sensor data encompass smartphone accelerometer, satellite, and WiFi signals, and the desired output is to discern the user motion and environment context.
+          </p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="content col-sm-12 col-md-10 col-lg-6">
+            <img src="./static/images/as_concise.jpg"
+                 class="image-scenario"
+                 alt="Interpolate start reference image."/>
+            <h4 class="subtitle has-text-centered">Figure 2. Overview of user activity sensing with LLMs.</h4>
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Sensor readings are observations from the underlying physical states.
+            A data augmentation is a mapping F(&middot;) that transforms observations from the original space to the augmented space.
+            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between observations with the underlying physical principles, which is defined as:
+          </p>
+        </div>
+        <h3 class="title is-4">Preliminary Results</h3>
+        <div class="row justify-content-center">
+          <div class="content col-sm-12 col-md-12 col-lg-12">
+            <img src="./static/images/as_exp.jpg"
+                 class="image-scenario"
+                 alt="Interpolate start reference image."/>
+            <h4 class="subtitle has-text-centered">Figure 3. Response examples of ChatGPT-4 for activity sensing.</h4>
+          </div>
+        </div>
 
-<!--        &lt;!&ndash; Re-rendering. &ndash;&gt;-->
-<!--&lt;!&ndash;        <h3 class="title is-4">Re-rendering the input video</h3>&ndash;&gt;-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            To mitigate the data heterogeneity, UniHAR enriches the IMU data diversity based on physical knowledge and assists the learning of generalizable features.-->
-<!--          </p>-->
-<!--        </div>-->
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Activity Sensing. -->
+
+    <!-- Heartbeat Detection. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Heartbeat Detection</h2>
+        <!--        <br/>-->
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
+        <div class="content has-text-justified">
+          <p>
+            This section describes our effort to go beyond the general expectations of the textualized signal processing ability of LLMs. We specifically study the potential of ChatGPT in comprehending digitized sensor signals.
+          </p>
+        </div>
+        <h3 class="title is-4">Design</h3>
+        <div class="content has-text-justified">
+          <p>
+            We take human heartbeat detection as an illustrative example, where we task ChatGPT with the input of ECG waveforms to derive the heartbeat rate. Fundamentally different from the previous example, all sensor data in this application are expressed as sequences of digitized samples.
+            Figure 4 provides an overview of the design.</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="content col-sm-12 col-md-10 col-lg-5">
+            <img src="./static/images/hd_concise.jpg"
+                 class="image-scenario"
+                 alt="Interpolate start reference image."/>
+            <h4 class="subtitle has-text-centered">Figure 4. Overview of heartbeat detection with LLMs.</h4>
+          </div>
+        </div>
+        <h3 class="title is-4">Preliminary Results</h3>
 <!--        <div class="row justify-content-center">-->
-<!--          <div class="content col-sm-12 col-md-10 col-lg-8">-->
-<!--            <img src="./static/images/data_aug.jpg"-->
+<!--          <div class="content col-sm-12 col-md-12 col-lg-12">-->
+<!--            <img src="./static/images/as_exp.jpg"-->
 <!--                 class="image-scenario"-->
 <!--                 alt="Interpolate start reference image."/>-->
-<!--            <h4 class="subtitle has-text-centered">Data augmentation model.</h4>-->
+<!--            <h4 class="subtitle has-text-centered">Figure 3. Response examples of ChatGPT-4 for activity sensing.</h4>-->
 <!--          </div>-->
 <!--        </div>-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            Sensor readings are observations from the underlying physical states.-->
-<!--            A data augmentation is a mapping F(&middot;) that transforms observations from the original space to the augmented space.-->
-<!--            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between observations with the underlying physical principles, which is defined as:-->
-<!--          </p>-->
-<!--          <p class="definition">-->
-<!--            <i>"G(&middot;) is a physical embedding of F(&middot;) if G(&middot;) transforms physical states such that the observations from the transformed physical states equal the augmented observations of F(&middot;).-->
-<!--            "-->
-<!--            </i>-->
-<!--          </p>-->
-<!--          <p>-->
-<!--            In practice, a mapping F(&middot;) that has a physical embedding G(&middot;) indicates the transition of readings can take place through a physical process in reality.-->
-<!--            We thus define three types of data augmentation based on the above physical embedding:-->
-<!--          </p>-->
-<!--          <ul>-->
-<!--              <li>-->
-<!--                <p>-->
-<!--                  <strong>Complete data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), and F(&middot;) can be fully formulated with original observations and known physical states.-->
-<!--              </p>-->
 
-<!--              </li>-->
-<!--            <li>-->
-<!--              <p>-->
-<!--                <strong>Approximate data augmentation</strong>, where its mapping F(&middot;) is connected with a physical embedding G(&middot;), but F(&middot;) involves unknown physical states and can be approximated by a formulation of known states.-->
-<!--              </p>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--              <p>-->
-<!--                <strong>Flaky data augmentation</strong>, where we cannot find a physical embedding G(&middot;) to support its mapping F(&middot;).-->
-<!--              </p>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--          <p>-->
-<!--            We refer complete and approximate data augmentations to <strong><em>Physics-Informed Data Augmentations (PIDA)</em></strong>, which both have underlying support of physical embeddings.-->
-<!--          </p>-->
-<!--          <p>-->
-<!--            UniHAR incorporates physics-informed data augmentation methods differently during the two stages of the framework based on their respective characteristics.-->
-<!--            During the feature extraction stage, UniHAR only employs complete data augmentations to unlabeled data for generalizing the data distributions and avoiding approximation errors at scale.-->
-<!--            During the feature extraction stage, UniHAR applies both complete and approximate data augmentation to augment labeled data for further data representativeness.-->
-<!--          </p>-->
-<!--        </div>-->
+        <!--/ Re-rendering. -->
 
-<!--        &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
-
-<!--      </div>-->
-<!--    </div>-->
-    <!--/ Data augmentation. -->
+      </div>
+    </div>
+    <!--/ Heartbeat Detection. -->
 
     <!-- Adoption. -->
 <!--    <div class="columns is-centered">-->
