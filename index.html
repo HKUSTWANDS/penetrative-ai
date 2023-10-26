@@ -265,6 +265,7 @@
         </div>
         <h3 class="title is-4">Design</h3>
         <div class="content has-text-justified">
+          <p>
             We take activity sensing as an illustrative example, where we task ChatGPT with the interpretation of sensor data collected from smartphones to derive user activities. The input sensor data encompass smartphone accelerometer, satellite, and WiFi signals, and the desired output is to discern the user motion and environment context.
           </p>
         </div>
@@ -278,9 +279,8 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            Sensor readings are observations from the underlying physical states.
-            A data augmentation is a mapping F(&middot;) that transforms observations from the original space to the augmented space.
-            We introduce the concept of <strong><em>physical embedding</em></strong> G(&middot;) to align the mapping F(&middot;) between observations with the underlying physical principles, which is defined as:
+            To facilitate ChatGPT comprehension of the sensor data, we undertake a preprocessing step where raw data from different sensing modules are separately converted into textualized states that are expected interpretable by ChatGPT.
+            A full prompt includes a defined objective and expert knowledge of the sensor data, all in natural language. Essentially, the way we construct the prompt serves as a means to educate and instruct ChatGPT to interpret sensor data.
           </p>
         </div>
         <h3 class="title is-4">Preliminary Results</h3>
@@ -292,7 +292,15 @@
             <h4 class="subtitle has-text-centered">Figure 3. Response examples of ChatGPT-4 for activity sensing.</h4>
           </div>
         </div>
-
+        <div class="content has-text-justified">
+          <p>
+            Our preliminary results suggest LLMs are highly effective in analyzing physical world signals when they are properly abstracted into textual representations.
+            These findings align with our initial expectations based on the "world model" hypothesis of LLMs.
+          </p>
+          <p>
+            <i class="fas fa-hand-point-right"></i> Check more examples and our prompt at <a href="https://github.com/dapowan/Penetrative-AI/blob/main/demo/activity_sensing.md" target="_blank"><i class="fab fa-github"></i>here</a>.
+          </p>
+        </div>
         <!--/ Re-rendering. -->
 
       </div>
@@ -327,17 +335,59 @@
             <h4 class="subtitle has-text-centered">Figure 4. Overview of heartbeat detection with LLMs.</h4>
           </div>
         </div>
+        <div class="content has-text-justified">
+          <p>
+            Our prior experiments showed that ChatGPT failed to identify most R-peaks without guidance. However, R-peak selection seems to be an easy task for human.
+            So how do we identify R-peaks? Based on manual observations, we design a natural language-based "algorithm" that LLMs understand to guide the selection of R-peaks:
+          </p>
+          <ol>
+            <li>
+              <p>
+                <strong>Initial Observation. </strong>
+                Begin by observing the rough overall range of ECG numbers in the provided data.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Identify Subsequences. </strong>
+                Find subsequences of numbers that meet the following criteria:
+                <ul>
+              <li>The initial numbers are in the lower part of the overall range, even smaller than the range.</li>
+              <li>Subsequent numbers exhibit a significant increase, even exceeding the overall range.</li>
+              <li>Following the increase, subsequent numbers return to the overall range.</li>
+            </ul>
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Select R-Peaks. </strong>
+                After identifying these subsequences, select the largest number from each subsequence as an R-peak.
+              </p>
+            </li>
+          </ol>
+          <p>
+            We investigate whether ChatGPT can effectively execute such fuzzy logic (without explicit threshold values) when processing the digitized signals.
+            We call this algorithm the <strong>'natural language algorithm'</strong> as it is expressed as text.
+          </p>
+        </div>
         <h3 class="title is-4">Preliminary Results</h3>
-<!--        <div class="row justify-content-center">-->
-<!--          <div class="content col-sm-12 col-md-12 col-lg-12">-->
-<!--            <img src="./static/images/as_exp.jpg"-->
-<!--                 class="image-scenario"-->
-<!--                 alt="Interpolate start reference image."/>-->
-<!--            <h4 class="subtitle has-text-centered">Figure 3. Response examples of ChatGPT-4 for activity sensing.</h4>-->
-<!--          </div>-->
-<!--        </div>-->
-
-        <!--/ Re-rendering. -->
+        <div class="row justify-content-center">
+          <div class="content col-sm-12 col-md-10 col-lg-10">
+            <img src="./static/images/hd_exp.jpg"
+                 class="image-scenario"
+                 alt="Interpolate start reference image."/>
+            <h4 class="subtitle has-text-centered">Figure 5. Response examples of ChatGPT-4 for heartbeat detection.</h4>
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Our initial findings indicate that LLMs, particularly ChatGPT-4, exhibit remarkable proficiency in analyzing physical digitized signals when provided with proper guidance.
+            These results provide additional evidence supporting the "world model" hypothesis of LLMs.
+          </p>
+          <p>
+            <i class="fas fa-hand-point-right"></i> Check more examples and our prompt at <a href="https://github.com/dapowan/Penetrative-AI/blob/main/demo/heartbeat_detection.md" target="_blank"><i class="fab fa-github"></i>here</a>.
+          </p>
+        </div>
 
       </div>
     </div>
@@ -417,7 +467,12 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>TBD</code></pre>
+    <pre><code>@article{xu2023penetrative,
+  title={Penetrative AI: Making LLMs Comprehend the Physical World},
+  author={Xu, Huatao and Han, Liying and Li, Mo and Srivastava, Mani},
+  journal={arXiv preprint arXiv:2310.09605},
+  year={2023}
+}</code></pre>
   </div>
 </section>
 
