@@ -1,3 +1,3 @@
 # wands_penetrative-ai
 
-Check our [website](https://dapowan.github.io/wands_penetrative-ai/) for more details
+Check our [website](https://hkustwands.github.io/penetrative-ai/) for more details
